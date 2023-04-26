@@ -1,0 +1,30 @@
+[
+    {
+        "title": "内部网址",
+        "pages": [
+            {
+                "icon":"https://baidu.com/favicon.ico",
+                "title": "百度",
+                "description": "国内主流搜索引擎",
+                "url": "https://baidu.com"
+            },
+            {
+                "icon":"https://zhihu.com/favicon.ico",
+                "title": "知乎",
+                "description": "国内主流问答平台",
+                "url": "https://zhihu.com"
+            }
+        ]
+    },
+    {
+        "title": "外部系统导航",
+        "pages": [
+            {
+                "icon":"https://baidu.com/favicon.ico",
+                "title": "百度",
+                "description": "国内主流搜索引擎",
+                "url": "https://baidu.com"
+            }
+        ]
+    }
+]
