@@ -21,7 +21,7 @@ class PageCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        height: 150,
+        height: 180,
         width: 310,
         decoration: BoxDecoration(
             color: Colors.white,

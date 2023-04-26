@@ -20,9 +20,9 @@
         "title": "外部系统导航",
         "pages": [
             {
-                "icon":"https://baidu.com/favicon.ico",
-                "title": "百度",
-                "description": "国内主流搜索引擎",
+                "icon":"https://google.com/favicon.ico",
+                "title": "Google",
+                "description": "主流搜索引擎",
                 "url": "https://baidu.com"
             }
         ]
