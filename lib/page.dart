@@ -34,11 +34,15 @@ class PageCard extends StatelessWidget {
                 child: Row(
               mainAxisSize: MainAxisSize.max,
               children: [
-                SizedBox(
-                  width: 100,
-                  child: CachedNetworkImage(
-                    imageUrl: iconUrl,
-                    errorWidget: (context, url, error) => new Icon(Icons.error),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SizedBox(
+                    width: 100,
+                    child: CachedNetworkImage(
+                      imageUrl: iconUrl,
+                      errorWidget: (context, url, error) =>
+                          new Icon(Icons.error),
+                    ),
                   ),
                 ),
                 Expanded(

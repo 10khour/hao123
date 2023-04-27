@@ -27,8 +27,9 @@ class _Hao123State extends State<Hao123> {
           child: Form(
             child: TextField(
               textInputAction: TextInputAction.search,
-              onSubmitted: (text) {
-                init();
+              onChanged: (text) {
+                print("reload");
+                init(text);
               },
               controller: controller,
               decoration: const InputDecoration(
@@ -40,9 +41,6 @@ class _Hao123State extends State<Hao123> {
             ),
           ),
         ),
-        actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.settings))
-        ],
       ),
       body: body,
     );
@@ -73,33 +71,63 @@ class _Hao123State extends State<Hao123> {
     return categories;
   }
 
-  init() {
+  init(String search) {
     getData().then((value) {
-      setState(() {
-        var categories = getCategory(value);
-        List<Widget> list = List.empty(growable: true);
-        for (var widget in categories!) {
-          if (!list.isEmpty) {
-            list.add(Container(
-              height: 30,
-            ));
-          } else {
-            list.add(Container(
-              height: 10,
-            ));
-          }
-          list.add(widget);
+      var categories = getCategory(value);
+      for (var i = 0; i < categories.length; i++) {
+        if (categories[i].title.toUpperCase().contains(search.toLowerCase())) {
+          continue;
         }
-        // filter
+        for (var j = 0; j < categories[i].childs.length; j++) {
+          if (categories[i].childs[j] is PageCard) {
+            categories[i].childs.removeWhere((element) {
+              if (element is PageCard) {
+                var pageCard = element;
+                if (pageCard.description
+                    .toUpperCase()
+                    .contains(search.toUpperCase())) {
+                  return false;
+                }
+                if (pageCard.url.toUpperCase().contains(search.toLowerCase())) {
+                  return false;
+                }
+                if (pageCard.title
+                    .toUpperCase()
+                    .contains(search.toUpperCase())) {
+                  return false;
+                }
+                return true;
+              }
+              return false;
+            });
+          }
+        }
+      }
+      categories.removeWhere((element) {
+        return element.childs.isEmpty;
+      });
+      List<Widget> list = List.empty(growable: true);
+      for (var widget in categories!) {
+        if (!list.isEmpty) {
+          list.add(Container(
+            height: 30,
+          ));
+        } else {
+          list.add(Container(
+            height: 10,
+          ));
+        }
+        list.add(widget);
+      }
+      // filter
 
-        setState(() {
-          body = SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: list,
-            ),
-          );
-        });
+      setState(() {
+        body = SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: list,
+          ),
+        );
       });
     });
   }
@@ -107,6 +135,6 @@ class _Hao123State extends State<Hao123> {
   @override
   void initState() {
     super.initState();
-    init();
+    init(controller.text);
   }
 }
