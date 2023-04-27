@@ -1,4 +1,5 @@
 # Miscellaneous
+assets/page.json
 *.class
 *.log
 *.pyc

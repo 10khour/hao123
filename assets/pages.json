@@ -1,29 +1,142 @@
 [
     {
-        "title": "内部网址",
+        "title": "外部系统导航",
         "pages": [
             {
-                "icon":"https://baidu.com/favicon.ico",
-                "title": "百度",
-                "description": "国内主流搜索引擎",
-                "url": "https://baidu.com"
-            },
-            {
-                "icon":"https://zhihu.com/favicon.ico",
-                "title": "知乎",
-                "description": "国内主流问答平台",
-                "url": "https://zhihu.com"
+                "icon": "https://123.jidudev.com/img/bdcloud.png",
+                "title": "百度云",
+                "description": "公有云平台",
+                "url": "https://cloud.baidu.com/"
             }
         ]
     },
     {
-        "title": "外部系统导航",
+        "title": "内部系统导航",
         "pages": [
             {
-                "icon":"https://google.com/favicon.ico",
-                "title": "Google",
-                "description": "主流搜索引擎",
-                "url": "https://baidu.com"
+                "icon": "https://123.jidudev.com/img/wiki.png",
+                "title": "WIKI",
+                "description": "文档系统",
+                "url": "https://wiki.jiduauto.com/"
+            },
+            {
+                "icon": "https://123.jidudev.com/img/jira.png",
+                "title": "JIRA",
+                "description": "项目管理系统",
+                "url": "https://jira.jiduauto.com/"
+            },
+            {
+                "icon": "https://123.jidudev.com/img/jidu.png",
+                "title": "OA系统",
+                "description": "项目管理系统",
+                "url": "https://team.jiduauto.com/"
+            },
+            {
+                "icon": "https://123.jidudev.com/img/cdp.png",
+                "title": "CDP",
+                "description": "CDP画像系统",
+                "url": "https://cdp.jiduprod.com/"
+            },
+            {
+                "icon": "https://123.jidudev.com/img/optimus.png",
+                "title": "擎天柱",
+                "description": "小程序运营后台管理系统",
+                "url": "https://optimus.jiduprod.com/"
+            },
+            {
+                "icon": "https://123.jidudev.com/img/jims.png",
+                "title": "JMS",
+                "description": "数据质量管理系统",
+                "url": "https://jims.jiduprod.com/"
+            }
+        ]
+    },
+    {
+        "title": "DevOps系统导航",
+        "pages": [
+            {
+                "icon": "https://millow.jiduprod.com/favicon.ico",
+                "title": "millow",
+                "description": "研发运维管理平台",
+                "url": "https://millow.jiduprod.com/"
+            },
+            {
+                "icon": "https://123.jidudev.com/img/gitlab.png",
+                "title": "Gitlab",
+                "description": "Gitlab 内部代码仓库",
+                "url": "https://jidudev.com/"
+            },
+            {
+                "icon": "https://123.jidudev.com/img/gerrit.png",
+                "title": "Gerrit",
+                "description": "Gerrit 版本维护与代码审批系统",
+                "url": "https://gerrit.jiduauto.com/"
+            },
+            {
+                "icon": "https://123.jidudev.com/img/jaeger.png",
+                "title": "全链路追踪系统",
+                "description": "Trace 系统",
+                "url": "http://trace.jidudev.com/dashboard/"
+            },
+            {
+                "icon": "https://123.jidudev.com/img/nyuwa.png",
+                "title": "女娲",
+                "description": "DevOps研发运维平台",
+                "url": "https://nyuwa.jiduprod.com/"
+            },
+            {
+                "icon": "https://123.jidudev.com/img/jfrog.png",
+                "title": "Jfrog Artifactory",
+                "description": "Repo 制品库管理",
+                "url": "https://repo.jidudev.com/"
+            },
+            {
+                "icon": "https://123.jidudev.com/img/kibana.png",
+                "title": "日志平台",
+                "description": "日志搜索工具,kbana",
+                "url": "http://log.jidudev.com/"
+            },
+            {
+                "icon": "https://123.jidudev.com/img/jenkins.png",
+                "title": "云端 Jenkins",
+                "description": "云端系统集成工具",
+                "url": "https://jkscloud.jidudev.com/"
+            },
+            {
+                "icon": "https://123.jidudev.com/img/jenkins.png",
+                "title": "车端 Jenkins",
+                "description": "车端系统集成工具",
+                "url": "https://jenkins.jidudev.com/"
+            },
+            {
+                "icon": "https://123.jidudev.com/img/jumpserver.png",
+                "title": "JumpServer",
+                "description": "跳板机",
+                "url": "http://jump.jidudev.com/"
+            },
+            {
+                "icon": "https://123.jidudev.com/img/grafana.png",
+                "title": "Grafana",
+                "description": "监控平台",
+                "url": "https://nyuwa.jiduprod.com/jidu-oncall/monitor/chart/dashboards"
+            },
+            {
+                "icon": "https://123.jidudev.com/img/sql2.png",
+                "title": "数据库系统",
+                "description": "数据库审核平台",
+                "url": "http://yearning.io/"
+            },
+            {
+                "icon": "https://prometheus.jidudev.com/favicon.ico",
+                "title": "Prometheus",
+                "description": "监控告警平台",
+                "url": "https://prometheus.jidudev.com/"
+            },
+            {
+                "icon": "https://rancher.jidudev.com/favicon.ico",
+                "title": "Rancher",
+                "description": "容器运维平台",
+                "url": "https://rancher.jidudev.com/"
             }
         ]
     }

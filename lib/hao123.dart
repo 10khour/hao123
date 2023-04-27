@@ -21,7 +21,7 @@ class _Hao123State extends State<Hao123> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // backgroundColor: Colors.grey.withOpacity(1.0),
+        backgroundColor: Color.fromRGBO(130, 77, 252, 1.0),
         title: SizedBox(
           width: 480,
           child: Form(
