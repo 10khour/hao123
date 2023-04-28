@@ -24,11 +24,11 @@ class _Hao123State extends State<Hao123> {
         backgroundColor: Color.fromRGBO(130, 77, 252, 1.0),
         title: SizedBox(
           width: 480,
+          height: 43,
           child: Form(
             child: TextField(
               textInputAction: TextInputAction.search,
               onChanged: (text) {
-                print("reload");
                 init(text);
               },
               controller: controller,
