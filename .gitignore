@@ -10,7 +10,7 @@ assets/page.json
 .history
 .svn/
 migrate_working_dir/
-
+*.dmg
 # IntelliJ related
 *.iml
 *.ipr
