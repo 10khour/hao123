@@ -72,10 +72,29 @@ class _Hao123State extends State<Hao123> {
     if (Platform.isLinux || Platform.isMacOS || Platform.isWindows) {
       String home = Platform.environment['HOME'] ?? "";
       File f = File(path.join(home, ".hao123.json"));
-      if (f.readAsStringSync().isNotEmpty) {
-        return Future.value(f.readAsStringSync());
-      }
+      setState(() {
+        body = Center(
+          child: Text("读取本地配置中..."),
+        );
+      });
+      try {
+        String s = f.readAsStringSync();
+        if (s.isNotEmpty) {
+          setState(() {
+            body = Center(
+              child: Text("本地配置读取成功..."),
+            );
+          });
+          return Future.value(s);
+        }
+      } on Exception catch (_) {}
+      setState(() {
+        body = Center(
+          child: Text("本地配置读取失败，使用内置配置..."),
+        );
+      });
     }
+
     return await rootBundle.loadString("assets/pages.json");
   }
 
@@ -101,6 +120,11 @@ class _Hao123State extends State<Hao123> {
   }
 
   init(String search) {
+    setState(() {
+      body = Center(
+        child: Text("解析配置中..."),
+      );
+    });
     getData().then((value) {
       var categories = getCategory(value);
       for (var i = 0; i < categories.length; i++) {

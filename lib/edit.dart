@@ -25,7 +25,7 @@ class _PageEditorState extends State<PageEditor> {
     try {
       String home = Platform.environment['HOME'] ?? "";
       File f = File(path.join(home, ".hao123.json"));
-      f.writeAsStringSync(data, flush: true);
+      f.writeAsString(data, flush: true);
     } on Exception catch (e) {
       log(e.toString());
     }
