@@ -1,7 +1,7 @@
 # hao123
 A personal website navigation program .
 
-## build
+## Build
 ```
 flutter build macos --release
 local:hao123 licong$ appdmg dmg.json 123.dmg
