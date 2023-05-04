@@ -1,4 +1,5 @@
 # hao123
+A personal website navigation program .
 
 ## build
 ```
@@ -30,6 +31,5 @@ local:hao123 licong$ appdmg dmg.json 123.dmg
 Your image is ready:
 123.dmg
 ```
-A personal website navigation program .
 
 ![demo](./demo.png)
