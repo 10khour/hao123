@@ -72,7 +72,9 @@ class _Hao123State extends State<Hao123> {
     if (Platform.isLinux || Platform.isMacOS || Platform.isWindows) {
       String home = Platform.environment['HOME'] ?? "";
       File f = File(path.join(home, ".hao123.json"));
-      return Future.value(f.readAsStringSync());
+      if (f.readAsStringSync().isNotEmpty) {
+        return Future.value(f.readAsStringSync());
+      }
     }
     return await rootBundle.loadString("assets/pages.json");
   }
