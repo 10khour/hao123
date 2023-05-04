@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hao123/page.dart';
 
+// ignore: must_be_immutable
 class Category extends StatelessWidget {
   String title;
   List<Widget> childs;

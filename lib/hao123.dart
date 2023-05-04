@@ -1,7 +1,11 @@
 import 'dart:convert';
+import 'dart:developer';
+import 'dart:io';
+import 'package:path/path.dart' as path;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:hao123/edit.dart';
 import 'package:hao123/page.dart';
 
 import 'category.dart';
@@ -21,7 +25,24 @@ class _Hao123State extends State<Hao123> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(130, 77, 252, 1.0),
+        actions: [
+          if (Platform.isMacOS)
+            IconButton(
+                onPressed: () {
+                  getData().then((value) {
+                    Navigator.push(context, MaterialPageRoute(builder: (ctx) {
+                      return PageEditor(jsonString: value);
+                    })).then((value) {
+                      init(controller.text);
+                    });
+                  });
+                },
+                icon: Icon(
+                  Icons.settings,
+                  color: Colors.black,
+                ))
+        ],
+        backgroundColor: Color.fromRGBO(130, 77, 252, 0.9),
         title: SizedBox(
           width: 480,
           height: 43,
@@ -47,6 +68,12 @@ class _Hao123State extends State<Hao123> {
   }
 
   Future<String> getData() async {
+    log(Platform.operatingSystem);
+    if (Platform.isLinux || Platform.isMacOS || Platform.isWindows) {
+      String home = Platform.environment['HOME'] ?? "";
+      File f = File(path.join(home, ".hao123.json"));
+      return Future.value(f.readAsStringSync());
+    }
     return await rootBundle.loadString("assets/pages.json");
   }
 
@@ -66,7 +93,7 @@ class _Hao123State extends State<Hao123> {
         widgets.add(PageCard(
             iconUrl: icon, url: url, title: title, description: description));
       }
-      categories!.add(Category(title: title, childs: widgets));
+      categories.add(Category(title: title, childs: widgets));
     }
     return categories;
   }
@@ -107,8 +134,8 @@ class _Hao123State extends State<Hao123> {
         return element.childs.isEmpty;
       });
       List<Widget> list = List.empty(growable: true);
-      for (var widget in categories!) {
-        if (!list.isEmpty) {
+      for (var widget in categories) {
+        if (list.isNotEmpty) {
           list.add(Container(
             height: 30,
           ));
@@ -120,7 +147,6 @@ class _Hao123State extends State<Hao123> {
         list.add(widget);
       }
       // filter
-
       setState(() {
         body = SingleChildScrollView(
           child: Column(
