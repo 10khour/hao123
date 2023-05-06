@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:io';
 import 'package:path/path.dart' as path;
 
@@ -68,7 +67,6 @@ class _Hao123State extends State<Hao123> {
   }
 
   Future<String> getData() async {
-    log(Platform.operatingSystem);
     if (Platform.isLinux || Platform.isMacOS || Platform.isWindows) {
       String home = Platform.environment['HOME'] ?? "";
       File f = File(path.join(home, ".hao123.json"));
