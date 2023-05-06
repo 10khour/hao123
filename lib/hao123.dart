@@ -25,6 +25,7 @@ class _Hao123State extends State<Hao123> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 40,
         actions: [
           if ((!kIsWeb) && Platform.isMacOS)
             IconButton(
@@ -44,8 +45,8 @@ class _Hao123State extends State<Hao123> {
         ],
         backgroundColor: Color.fromRGBO(130, 77, 252, 0.9),
         title: SizedBox(
-          width: 480,
-          height: 43,
+          width: 400,
+          height: 35,
           child: Form(
             child: TextField(
               textInputAction: TextInputAction.search,
@@ -53,12 +54,19 @@ class _Hao123State extends State<Hao123> {
                 init(text);
               },
               controller: controller,
-              decoration: const InputDecoration(
-                filled: true,
-                fillColor: Colors.white,
-                border: OutlineInputBorder(),
-                hintText: 'seach ...',
-              ),
+              style: TextStyle(color: Colors.white.withOpacity(0.8)),
+              decoration: InputDecoration(
+                  prefixIcon: Icon(
+                    Icons.search,
+                    color: Colors.white.withOpacity(0.4),
+                  ),
+                  filled: true,
+                  contentPadding: EdgeInsets.only(top: 4, left: 10),
+                  fillColor: Colors.grey.withOpacity(0.3),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(18))),
+                  hintText: 'seach ...',
+                  hintStyle: TextStyle(color: Colors.white.withOpacity(0.5))),
             ),
           ),
         ),
