@@ -1,14 +1,13 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:system_tray/system_tray.dart';
 import 'package:window_manager/window_manager.dart';
 
 class AppWindowLisenter extends WindowListener {
+  // 监听程序关闭事件
   @override
   void onWindowClose() {
     super.onWindowClose();
-    log("close");
     windowManager.minimize();
   }
 }
@@ -34,12 +33,18 @@ Future<void> initSystemTray() async {
   await systemTray.setContextMenu(menu);
 
   // handle system tray event
-  systemTray.registerSystemTrayEventHandler((eventName) {
+  systemTray.registerSystemTrayEventHandler((eventName) async {
     // debugPrint("eventName: $eventName");
     if (eventName == kSystemTrayEventClick) {
-      Platform.isWindows ? systemTray.popUpContextMenu() : appWindow.show();
-    } else if (eventName == kSystemTrayEventRightClick) {
-      Platform.isWindows ? appWindow.show() : systemTray.popUpContextMenu();
+      if (await windowManager.isMinimized()) {
+        Platform.isWindows ? systemTray.popUpContextMenu() : appWindow.show();
+      } else {
+        Platform.isWindows ? systemTray.popUpContextMenu() : appWindow.close();
+      }
+    } else {
+      if (eventName == kSystemTrayEventRightClick) {
+        Platform.isWindows ? appWindow.show() : systemTray.popUpContextMenu();
+      }
     }
   });
 }

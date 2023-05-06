@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:hao123/edit.dart';
 import 'package:hao123/page.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 import 'category.dart';
 
@@ -25,7 +26,7 @@ class _Hao123State extends State<Hao123> {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          if (Platform.isMacOS)
+          if ((!kIsWeb) && Platform.isMacOS)
             IconButton(
                 onPressed: () {
                   getData().then((value) {
@@ -67,7 +68,8 @@ class _Hao123State extends State<Hao123> {
   }
 
   Future<String> getData() async {
-    if (Platform.isLinux || Platform.isMacOS || Platform.isWindows) {
+    if ((!kIsWeb) &&
+        (Platform.isLinux || Platform.isMacOS || Platform.isWindows)) {
       String home = Platform.environment['HOME'] ?? "";
       File f = File(path.join(home, ".hao123.json"));
       setState(() {
