@@ -21,18 +21,7 @@ void main() async {
     // 添加窗口事件监听者
     windowManager.addListener(AppWindowLisenter());
 
-    WindowOptions windowOptions = const WindowOptions(
-      size: Size(1350, 850),
-      center: true,
-      backgroundColor: Colors.transparent,
-      skipTaskbar: false,
-      titleBarStyle: TitleBarStyle.hidden,
-      windowButtonVisibility: true,
-    );
-    windowManager.waitUntilReadyToShow(windowOptions, () async {
-      await windowManager.show();
-      await windowManager.focus();
-    });
+    await initWindow();
   }
 
   runApp(const MyApp());

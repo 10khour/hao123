@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/material.dart';
 import 'package:system_tray/system_tray.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -47,4 +48,29 @@ Future<void> initSystemTray() async {
       }
     }
   });
+}
+
+WindowOptions windowOptions = const WindowOptions(
+  size: Size(1350, 850),
+  center: true,
+  backgroundColor: Colors.transparent,
+  skipTaskbar: false,
+  titleBarStyle: TitleBarStyle.hidden,
+  windowButtonVisibility: true,
+);
+
+initWindow() async {
+  windowManager.waitUntilReadyToShow(windowOptions, () async {
+    await windowManager.show(inactive: true);
+    await windowManager.focus();
+  });
+}
+
+appBarDoubleTap() async {
+  if (await windowManager.isMaximized()) {
+    await initWindow();
+    windowManager.center();
+  } else {
+    await windowManager.maximize();
+  }
 }

@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:hao123/windows.dart';
 import 'package:path/path.dart' as path;
 
 import 'package:flutter/material.dart';
@@ -21,10 +22,14 @@ class Hao123 extends StatefulWidget {
 class _Hao123State extends State<Hao123> {
   Widget body = const Center(child: Text("loading ..."));
   TextEditingController controller = TextEditingController();
+  FocusNode focusNode = FocusNode();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        flexibleSpace: GestureDetector(onDoubleTap: () async {
+          await appBarDoubleTap();
+        }),
         toolbarHeight: 40,
         actions: [
           if ((!kIsWeb) && Platform.isMacOS)
@@ -53,6 +58,7 @@ class _Hao123State extends State<Hao123> {
               onChanged: (text) {
                 init(text);
               },
+              focusNode: focusNode,
               controller: controller,
               style: TextStyle(color: Colors.white.withOpacity(0.8)),
               decoration: InputDecoration(
@@ -196,5 +202,9 @@ class _Hao123State extends State<Hao123> {
   void initState() {
     super.initState();
     init(controller.text);
+
+    // 输入框自动激活
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) => focusNode.requestFocus());
   }
 }
