@@ -71,7 +71,7 @@ class _Hao123State extends State<Hao123> {
                   fillColor: Colors.grey.withOpacity(0.3),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(18))),
-                  hintText: 'seach ...',
+                  hintText: 'search ...',
                   hintStyle: TextStyle(color: Colors.white.withOpacity(0.5))),
             ),
           ),
